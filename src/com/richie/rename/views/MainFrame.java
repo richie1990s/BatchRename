@@ -14,17 +14,17 @@
  * limitations under the License.
  */
 
-package com.richie.rename;
+package com.richie.rename.views;
 
-import com.richie.rename.views.MainFrame;
+import javax.swing.JFrame;
 
 /**
- * APP主类
+ * APP主窗体
  * @author richie (richie1990@163.com)
  */
-public class Rename {
+public class MainFrame extends JFrame{
 
-    public static void main(String[] args){
-        new MainFrame().setVisible(true);
+    public MainFrame() {
+
     }
 }
