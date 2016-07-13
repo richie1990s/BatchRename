@@ -14,17 +14,28 @@
  * limitations under the License.
  */
 
-package com.richie.rename;
+package com.richie.rename.views;
 
-import com.richie.rename.views.FrameMain;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 /**
- * APP主类
+ * 中间的文件名列表控件
+ *
  * @author richie (richie1990@163.com)
  */
-public class Rename {
+class PanelCenter extends JPanel {
+    private JLabel label;
 
-    public static void main(String[] args){
-        new FrameMain().setVisible(true);
+    PanelCenter() {
+        label = new JLabel();
+
+        add(label);
+
+
+    }
+
+    public void setText(String text){
+        label.setText("选择文件夹: " + text);
     }
 }

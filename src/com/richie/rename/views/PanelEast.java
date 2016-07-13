@@ -14,17 +14,13 @@
  * limitations under the License.
  */
 
-package com.richie.rename;
+package com.richie.rename.views;
 
-import com.richie.rename.views.FrameMain;
+import javax.swing.JPanel;
 
 /**
- * APP主类
+ * 左侧的命名规则控件
  * @author richie (richie1990@163.com)
  */
-public class Rename {
-
-    public static void main(String[] args){
-        new FrameMain().setVisible(true);
-    }
+class PanelEast extends JPanel {
 }

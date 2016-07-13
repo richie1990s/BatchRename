@@ -16,15 +16,22 @@
 
 package com.richie.rename.views;
 
-import javax.swing.JFrame;
-
 /**
- * APP主窗体
+ * APP的参数
+ *
  * @author richie (richie1990@163.com)
  */
-public class MainFrame extends JFrame{
+public interface AppConfigs {
+    // APP宽和高
+    int APP_WIDTH = 650, APP_HEIGHT = 450;
+    int APP_BG = 0xF0F0F0;
+    int TRANSPARENT_BG = 0x00000000;
 
-    public MainFrame() {
+    // 上方Panel大小
+    int NORTH_WIDTH = APP_WIDTH, NORTH_HEIGHT = 50;
+    // 左侧Panel大小
+    int EAST_WIDTH = 150, EAST_HEIGHT = APP_HEIGHT - NORTH_HEIGHT;
+    // 中间Panel大小
+    int CENTER_WIDTH = APP_WIDTH - EAST_WIDTH, CENTER_HEIGHT = EAST_HEIGHT;
 
-    }
 }
