@@ -17,6 +17,7 @@
 package com.richie.rename.views;
 
 
+import com.richie.rename.views.PanelEast.EastCallback;
 import com.richie.rename.views.PanelNorth.NorthCallback;
 
 import javax.swing.ImageIcon;
@@ -30,7 +31,7 @@ import java.awt.*;
  *
  * @author richie (richie1990@163.com)
  */
-public class FrameMain extends JFrame implements AppConfigs, NorthCallback {
+public class FrameMain extends JFrame implements AppConfigs, NorthCallback, EastCallback {
     private PanelCenter pcenter;
 
     public FrameMain() {
@@ -48,44 +49,34 @@ public class FrameMain extends JFrame implements AppConfigs, NorthCallback {
     private void addPanel() {
         JPanel panel = new JPanel();
         panel.setBackground(Color.black);
-        GridBagLayout layout = new GridBagLayout();
-        panel.setLayout(layout);
+        panel.setLayout(null);
         getContentPane().add(panel);
-        setContent(panel, layout);
+        setContent(panel);
     }
 
-    private void setContent(JPanel parent, GridBagLayout layout) {
-        Insets insets = new Insets(0, 0, 0, 0);
+    private void setContent(JPanel parent) {
         PanelNorth pnorth = new PanelNorth(this);
-        pnorth.setBackground(new Color(APP_BG));
+//        pnorth.setBackground(new Color(0x00FF00));
+        pnorth.setBounds(0, 0, NORTH_WIDTH, NORTH_HEIGHT);
         parent.add(pnorth);
-        GridBagConstraints snorth = new GridBagConstraints(0, 0, 2, 1,
-                0, 0, GridBagConstraints.NORTH, GridBagConstraints.NONE,
-                insets, NORTH_WIDTH, NORTH_HEIGHT);
-        layout.setConstraints(pnorth, snorth);
 
-        PanelEast peast = new PanelEast();
-        peast.setBackground(new Color(APP_BG));
+        PanelEast peast = new PanelEast(this);
+        peast.setBounds(0, NORTH_HEIGHT, EAST_WIDTH, EAST_HEIGHT);
         parent.add(peast);
-        GridBagConstraints seast = new GridBagConstraints(0, 1, 1, 1,
-                0, 0.3, GridBagConstraints.EAST, GridBagConstraints.NONE,
-                insets, EAST_WIDTH, EAST_HEIGHT);
-        layout.setConstraints(peast, seast);
 
         pcenter = new PanelCenter();
-        pcenter.setBackground(new Color(APP_BG));
+        pcenter.setBounds(EAST_WIDTH, NORTH_HEIGHT, CENTER_WIDTH, CENTER_HEIGHT);
+        pcenter.setBackground(new Color(0xCCCCCC));
         parent.add(pcenter);
-        GridBagConstraints s3 = new GridBagConstraints(1, 1, 1, 1,
-                0, 0.7, GridBagConstraints.CENTER, GridBagConstraints.NONE,
-                insets, CENTER_WIDTH, CENTER_HEIGHT);
-        layout.setConstraints(pcenter, s3);
-
     }
 
     @Override
     public void setDirPath(String text) {
-        pcenter.setText(text);
+        pcenter.setDirPath(text);
     }
 
-
+    @Override
+    public void setNameRule(String rules) {
+        pcenter.setNameRule(rules);
+    }
 }

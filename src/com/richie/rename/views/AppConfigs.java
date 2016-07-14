@@ -30,7 +30,7 @@ public interface AppConfigs {
     // 上方Panel大小
     int NORTH_WIDTH = APP_WIDTH, NORTH_HEIGHT = 50;
     // 左侧Panel大小
-    int EAST_WIDTH = 150, EAST_HEIGHT = APP_HEIGHT - NORTH_HEIGHT;
+    int EAST_WIDTH = 200, EAST_HEIGHT = APP_HEIGHT - NORTH_HEIGHT;
     // 中间Panel大小
     int CENTER_WIDTH = APP_WIDTH - EAST_WIDTH, CENTER_HEIGHT = EAST_HEIGHT;
 

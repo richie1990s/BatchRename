@@ -16,26 +16,70 @@
 
 package com.richie.rename.views;
 
-import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.io.File;
 
 /**
  * 中间的文件名列表控件
  *
  * @author richie (richie1990@163.com)
  */
-class PanelCenter extends JPanel {
-    private JLabel label;
+class PanelCenter extends JPanel implements AppConfigs{
+    private String rules;
+    private File[] files;
+    private JTable table;
 
     PanelCenter() {
-        label = new JLabel();
-
-        add(label);
-
-
+        setLayout(new FlowLayout());
+        setBackground(new Color(0xCCCCCC));
+        String[] columnNames = {"原文件名", "新文件名"};
+        FileTableModel tableModel = new FileTableModel(13, columnNames);
+        table = new JTable(tableModel);
+        table.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 14));
+        table.setRowHeight(30);
+        table.setBounds(0, 0, CENTER_WIDTH, CENTER_HEIGHT);
+        add(new JScrollPane(table));
     }
 
-    public void setText(String text){
-        label.setText("选择文件夹: " + text);
+    void setDirPath(String text) {
+        File dir = new File(text);
+        if (dir.exists() && dir.isDirectory()) {
+            files = dir.listFiles();
+        }
+        initTable();
+    }
+
+    void setNameRule(String rules) {
+        this.rules = rules;
+        initTable();
+    }
+
+    private void initTable() {
+        if (files == null || files.length < 1) {
+            return;
+        }
+
+        int rows = files.length;
+
+//        String[][] items = new String[rows][columns];
+//        for (int i = 0; i < rows; i++) {
+//            for (int j = 0; j < columns; j++) {
+//                if (j == 0) {
+//                    items[i][j] = files[i].getName();
+//                } else {
+//                    if (rules == null || rules.isEmpty()) {
+//                        items[i][j] = "";
+//                    } else {
+//                        items[i][j] = rules + "_" + i;
+//                    }
+//                }
+//            }
+//            table.addColumn(new TableColumn());
+//        }
     }
 }

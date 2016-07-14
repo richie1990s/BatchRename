@@ -45,7 +45,7 @@ class PanelNorth extends JPanel implements AppConfigs, MouseListener{
         setLayout(null);
         label = new JLabel("选择或拖拽文件夹", JLabel.CENTER);
         label.setBackground(new Color(TRANSPARENT_BG, true));
-        label.setSize(NORTH_WIDTH - 14, NORTH_HEIGHT - 14);
+        label.setSize(NORTH_WIDTH - 14, NORTH_HEIGHT - 10);
         label.setBorder(BorderFactory.createLineBorder(new Color(0x80000000, true), 2));
         label.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 14));
         label.setLocation(4, 4);
